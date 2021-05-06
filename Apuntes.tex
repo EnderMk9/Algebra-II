@@ -1,0 +1,840 @@
+\documentclass{preset}
+\course{Álgebra II}
+\contact{Abel Rosado}
+\usepackage[bb=boondox]{mathalfa}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\newcommand{\compconj}[1]{%
+  \overline{#1}%
+}
+
+\begin{document}
+\section{Formas bilineales}
+Sea $V$ un espacio vectorial de dimensión $n$ y cuerpo de escalares $\mathbb{K}$, definimos $\phi: V \times V \rightarrow \mathbb{K}$ de tal forma que $(v,w) \rightarrow \phi (v,w)$ y cumple:
+
+\vspace{10pt}
+\hspace{10pt}
+$\begin{matrix}
+(I)\;\; \phi(v_0,-) : && \begin{matrix}
+            V \rightarrow \mathbb{K} \\
+            w \rightarrow \phi(v_0,w) 
+        \end{matrix} \\
+(II)\; \phi(-,w_0) : && \begin{matrix}
+            V \rightarrow \mathbb{K} \\
+            v \rightarrow \phi(v,w_0) 
+        \end{matrix} \\
+\end{matrix}$
+\hspace{10pt}
+De tal forma que es lineal en cada entrada.
+
+\vspace{-15pt}
+\subsection{Productos escalares}
+$\phi: V \times V \rightarrow \mathbb{K}$ es un producto escalar $\iff$ $\left\{\phi (v,w)=\phi (w,v) \;\vert\; \phi \; \mbox{bilineal}\right\}$, debido a esto también se los denomina formas bilineales siméticas.
+
+\vspace{-15pt}
+\subsubsection{Degeneración}
+Se dice que una forma bilineal (en concreto, un producto escalar) es:
+
+\vspace{-10pt}
+\begin{itemize}
+	\item[$ $] Degenerado  \;\;  $\iff$ $\exists \; v \neq \mathbb{0} \in V \; \vert \; \phi(v,w) = 0 \;\; \forall \; w \in V$
+	\vspace{-10pt}
+    \item[$ $] No degnerado  $\iff$ $\phi(v,w) = 0 \;\; \forall \; w \in V \implies v=\mathbb{0}$
+\end{itemize} 
+
+\vspace{-25pt}
+\subsubsection{Definido positivo}
+Un producto escalar (o forma bilineal) sobre $\mathbb{R}$ es definido positivo $\iff$ $\begin{matrix}
+\phi(v,v)\geq 0 \ \;\; \forall \; v \in V\\
+\phi(v,v)=0 \implies v=\mathbb{0}
+\end{matrix}$
+
+
+Se observa que definido positivo $\implies$ no degenerado.
+
+\vspace{-15pt}
+\subsection{Forma genérica}
+Sea $V$ un espacio vectorial de dimensión $n$ y cuerpo de escalares $\mathbb{K}$ y $\phi: V \times V \rightarrow \mathbb{K}$ una forma bilineal. Sean $X=(x_1,\dots,x_n)$ e $Y=(y_1,\dots,y_n)$ vectores fila de $V$ expresados una base genérica de $V$, $\mathcal{B}=\{v_1,\dots,v_n\}$, tal que $X=\sum_{k=1}^{n}{x_k v_k}$ e $Y=\sum_{k=1}^{n}{y_k v_k}$, entonces:
+
+\vspace{-15pt}
+\[ \phi(X,Y)=\phi\left(\sum_{i=1}^{n}{x_i v_i},\sum_{j=1}^{n}{y_j v_j}\right)=\sum_{i=1}^{n}{x_i \phi\left( v_i, \sum_{j=1}^{n}{y_j v_j} \right)} = \sum_{i=1}^{n}{\sum_{j=1}^{n}{x_i y_j \phi\left( v_i, v_j \right)}}= X A Y^t\]
+\vspace{-10pt}
+\[A=\left[\begin{matrix}
+\phi(v_1,v_1) && \dots && \phi(v_1,v_n) \\
+\vdots && \ddots && \vdots\\
+\phi(v_n,v_1) && \dots && \phi(v_n,v_n) \\
+\end{matrix}\right] = [a_{ij} = \phi(v_i,v_j) \;\; \forall \; 1 \leq i,j \leq n] \]
+
+Hemos obtenido una expresión genérica para cualquier forma bilineal, $\phi(X,Y)=XAY^t$
+
+\vspace{-25pt}
+\subsubsection{Isomorfismo con $\mathcal{M}_{n \times n}$}
+\[ \underbrace{\left\{ \phi \;\; \vert \;\; \phi: V \times V \rightarrow \mathbb{K} \;\; \mbox{bilineal} \right\}}_{\mbox{espacio vectorial}}  \simeq \mathcal{M}_{n \times n} (\mathbb{K}) \;\;\;\;\;\; \mbox{(isomorfismo)}\]
+\vspace{-10pt}
+\[\phi \leftrightarrow A=[a_{ij} = \phi(v_i,v_j) \;\; \forall \; 1 \leq i,j \leq n] \;\;\;  \;\;\;
+\begin{matrix}
+\phi_1+\phi_2 \leftrightarrow A_1 + A_2\\
+\lambda\phi \leftrightarrow \lambda A
+\end{matrix} \]
+
+\noindent El conjunto de todas las transformaciones bilineales en un espacio vectorial $V$ de dimensión $n$ y cuerpo de escalares $\mathbb{K}$, es a su vez un espacio vectorial que es isomorfo a $\mathcal{M}_{n \times n} (\mathbb{K})$.
+
+\vspace{-15pt}
+\subsubsection{Productos escalares}
+Se puede observar que si la matriz A es simétrica, es decir $A=A^t$, $\phi(v_i,v_j)=\phi(v_j,v_i)$ y entonces cada sumando $x_i y_j\phi(v_i,v_j)= x_j y_i \phi(v_j,v_i)$ y por lo tanto la forma bilineal $\phi$ será simétrica, de tal forma:
+
+$\phi(X,Y)=XAY^t$ es producto escalar $\iff$ $A=A^t$.
+
+\vspace{-15pt}
+\subsubsection{Degeneración}
+Si $|A|=0$, se observa que el sistema $XA=0$ o $AY^t=0$ debe de tener soluciones no triviales, de tal forma que $\exists \;\; Y\neq \mathbb{0} \in V \;\; \vert \;\; \phi(X,Y)=XAY^t=X\mathbb{0}^t=0 \;\; \forall \; X \in V$, y viceversa. De la misma forma si $|A|\neq0$, $XA=0$ o $AY^t=0$ sólo tiene solución trivial, de tal forma $\forall \; Y\neq\mathbb{0} \implies \neg \; \phi(X,Y)=0 \;\; \forall \; X \in V$ y viceversa, por lo tanto:
+
+\vspace{-10pt}
+\begin{itemize}
+	\item[$ $] $\phi$ es degenerado  \;\;  $\iff$ $|A|=0$
+	\vspace{-10pt}
+    \item[$ $] $\phi$ es no degnerado  $\iff$ $|A|\neq0$
+\end{itemize} 
+
+\vspace{-15pt}
+\subsubsection{Criterio de Sylvester}
+El criterio de Sylvester determina si un producto escalar $\phi$ sobre $\mathbb{R}$ es definido positivo.
+ 
+\noindent Sea $\phi(X,Y)=XAY^t$, $A=A^t$, entonces $\phi$ es definido positivo si y solo si:
+
+\vspace{-15pt}
+\[a_{11}>0, \dots ,det(A_{i})>0, \dots,|A|>0, \;\;\;\; A_{i}=
+    \left[\begin{matrix}
+    a_{11} && \dots && a_{1i} \\
+    \vdots && \ddots && \vdots  \\
+    a_{1i} && \dots && a_{ii}
+    \end{matrix}\right]
+    \;\; \forall \;\; 1\leq i\leq n
+    \]
+
+\vspace{-30pt}  
+\subsubsection{Cambio de base}
+Sean $\mathcal{B}=\{v_1,\dots,v_n\}$ y $\mathcal{B}'=\{v'_1,\dots,v'_n\}$ bases de $V$ de tal forma que los vectores de $\mathcal{B}'$ están expresados en la base $\mathcal{B}$, se da $X^t=B(X')^t\rightarrow X=X'B^t$, donde $B$ es la matriz de cambio de base de $\mathcal{B}'$ a $\mathcal{B}$ con los vectores de la primera en función de la segunda como columnas, así podemos observar que $A'=B^tAB$:
+\vspace{-5pt}  
+\[ \phi(X,Y)=\phi(X'B^t,Y'B^t)=(X'B^t)A(Y'B^t)^t=X'(B^tAB)(Y')^t=X'A'(Y')^t=\phi(X',Y')\]
+
+\vspace{-30pt}
+\section{Métrica}
+\vspace{-15pt}
+\subsection{Norma}
+Una norma es una función definida tal que $||\;\;||_\phi:V \rightarrow \mathbb{R}^{+}_{0}$ con las siguientes propiedades:
+
+\vspace{-10pt}
+\begin{itemize}
+	\item[$ $] $||v||_\phi \geq 0 \;\; \forall v \in V$
+	\vspace{-10pt}
+    \item[$ $] $||v||_\phi = 0 \implies v=\mathbb{0}$
+    \vspace{-10pt}
+    \item[$ $] $||\lambda v||_\phi = |\lambda| \cdot ||v||_\phi \;\; \forall \; v \in V, \lambda \in \mathbb{K} $
+    \vspace{-10pt}
+    \item[$ $] Desigualdad triangular: $||v+w||_\phi\leq ||v||_\phi + ||w||_\phi \;\; \forall \; v,w \in V$
+\end{itemize}
+
+\vspace{-10pt}
+\noindent Un ejemplo de este tipo de función, y con la que vamos a trabajar mayoritariamente es la norma euclídea: $||v||_\phi:=\sqrt{\phi(v,v)}$, que además satisface que si $\phi(v,w)=0$, entonces se cumple el Teorema de Pitágoras: $||v+w||^{2}_{\phi} = ||v||^{2}_{\phi} + ||w||^{2}_{\phi}$.
+
+\vspace{-15pt}
+\subsubsection{Desigualdad de Schwarz}
+Además existe una propiedad que se cumple para todos los productos escalares definidos positivos de un espacio vectorial $V$, que es la Desigualdad de Schwarz:
+
+\vspace{-30pt}
+\[\phi^2(v,w)\leq \phi(v,v) \cdot \phi(w,w)  \;\; \;\; \mbox{o expresado con la norma euclídea} \;\; \;\; |\phi(v,w)| \leq ||v||_\phi \cdot ||w||_\phi \]
+
+\vspace{-30pt}
+\section{Ortogonalidad}
+Se define que dos vectores $v,w \in V$ son ortogonales con respecto a un producto escalar $\phi$ (definido positivo para los siguientes apartados) $\iff$ $\phi(v,w)=0$.
+
+\noindent A su vez se define que un vector $v$ es ortonormal a otro $v$ $\iff$ $w \perp_\phi v$ y $||w||_\phi=1$.
+
+\vspace{-15pt}
+\subsection{Independencia lineal de vectores ortogonales}
+Sea $\left\{v_1,\dots,v_k,\dots,v_r\right\}\: \vert \: r\leq n, \; v_k\neq \mathbb{0} \; \forall k \mbox{ y } \phi(v_i,v_j)=0 \; \forall i\neq j$, es decir, un conjunto de vectores perpendiculares dos a dos, puede verse que son linealmente independientes.
+\[ \mathbb{0}=\sum_{k=1}^{r}{\lambda_k v_k} \mbox{ para algunos } \lambda_k, \;\;\;\; \phi(\mathbb{0},w)=0 \;\; \forall w\in V \;\;\;\; \mbox{ si } w=v_i\]
+\vspace{-15pt}
+\[ 0=\phi\left(\sum_{k=1}^{r}{\lambda_k v_k},w\right)=\phi\left(\sum_{k=1}^{r}{\lambda_k v_k},v_i\right)=\sum_{k=1}^{r}{\lambda_k \phi(v_k,v_i)}=\lambda_i \phi(v_i,v_i)=0\implies\lambda_i=0 \;\; \forall i\]
+
+\noindent Gracias a la bilinearidad y a hacer uso de $\phi(v_i,v_j)=0 \; \forall i\neq j$ y $\phi(v,v)\neq0 \; \forall v$, concluimos que es un sistema linealmente independiente ya que:
+\vspace{-5pt}
+\[ \mathbb{0}=\sum_{k=1}^{r}{\lambda_k v_k} \iff \lambda_k =0 \;\; \forall k\]
+
+\vspace{-30pt}
+\subsection{Gram-Schmidt}
+El proceso de Gram-Schmidt nos permite obtener un vector ortogonal a un sistema ortogonal.
+
+\noindent Comenzamos con un caso sencillo, tenemos $w,v \in V$ l.i., si planteamos que $w-cv\perp_\phi v$:
+\vspace{-5pt}
+\[ 0=\phi(w-cv,v)=\phi(w,v)-c\phi(v,v)=0 \implies c=\frac{\phi(w,v)}{\phi(v,v)}\]
+\vspace{-35pt}
+\noindent \begin{flalign}
+& \mbox{De esta forma, } w'=w-\frac{\phi(w,v)}{\phi(v,v)}v \mbox{ es perpendicular a } v \mbox{.} & \nonumber
+\end{flalign}
+
+\vspace{15pt}
+
+\noindent Si en cambio tenemos $\mathcal{B}=\left\{v_1,\dots,v_k,\dots,v_r\right\}\: \vert \: r\leq n, \; v_k\neq \mathbb{0} \; \forall k \mbox{ y } \phi(v_i,v_j)=0 \; \forall i\neq j$, y tenemos $w$ que no es combinación lineal de ellos, planteamos que $w-\sum_{k=1}^{r}{c_k v_k}\perp_\phi v_i$:
+\[\phi\left(w-\sum_{k=1}^{r}{c_k v_k},v_i\right)=\phi(w,v_i)-\sum_{k=1}^{r}{c_k \phi(v_k,v_i)}=\phi(w,v_i)-c_i\phi(v_i,v_i)=0 \implies c_i=\frac{\phi(w,v_i)}{\phi(v_i,v_i)}\]
+\vspace{-25pt}
+\noindent \begin{flalign}
+& \mbox{De esta forma, } w'=w-\sum_{k=1}^{r}{\frac{\phi(w,v_k)}{\phi(v_k,v_k)} v_k} \mbox{ es perpendicular al sistema de vectores.} & \nonumber
+\end{flalign}
+Nótese que en ambos casos hemos vuelto a hacer uso de $\phi(v_i,v_j)=0 \; \forall i\neq j$ y $\phi(v,v)\neq0 \; \forall v$.
+
+\vspace{-15pt}
+\subsubsection{Proyecciones ortogonales (I)}
+Se define además que $\frac{\phi(w,v)}{\phi(v,v)}v$ es la proyección ortogonal de $w$ sobre $v$ y de forma más general $\sum_{k=1}^{r}{\frac{\phi(w,v_k)}{\phi(v_k,v_k)} v_k}$ es la proyección ortogonal de w sobre ese sistema de vectores ortogonales.
+\[\mbox{Se puede observar que: } \left|\left|w-\sum_{k=1}^{r}{c_k v_k}\right|\right|_\phi \leq \left|\left|w-\sum_{k=1}^{r}{a_k v_k}\right|\right|_\phi\]
+\[w-\sum_{k=1}^{r}{a_k v_k}=\left[w-\sum_{k=1}^{r}{c_k v_k}\right]+\left[\sum_{k=1}^{r}{(c_k-a_k) v_k}\right] \mbox{   (son $\perp_\phi$, pitágoras)}\]
+\[\left|\left|w-\sum_{k=1}^{r}{a_k v_k}\right|\right|_{\phi}^2=\left|\left|w-\sum_{k=1}^{r}{c_k v_k}\right|\right|_{\phi}^2+\left|\left|\sum_{k=1}^{r}{(c_k-a_k) v_k}\right|\right|_{\phi}^2\]
+\[\mbox{Si } a_k=c_k: c_k-a_k=0 \implies \left|\left|w-\sum_{k=1}^{r}{a_k v_k}\right|\right|_{\phi}^2=\left|\left|w-\sum_{k=1}^{r}{c_k v_k}\right|\right|_{\phi}^2\]
+\[\mbox{Si } a_k\neq c_k: \implies \left|\left|w-\sum_{k=1}^{r}{a_k v_k}\right|\right|_{\phi}^2\geq\left|\left|w-\sum_{k=1}^{r}{c_k v_k}\right|\right|_{\phi}^2 \blacksquare\]
+Por lo tanto obtenemos una definición intuitiva de proyección ortogonal, el único vector de la forma $\sum_{k=1}^{r}{a_k v_k}$ tal que está a la menor distancia posible de otro.
+\vspace{-15pt}
+\subsection{Ortogonalizar base}
+Si tenemos un conjunto de $r\leq n$ vectores linealmente independientes, no necesariamente ortogonales, que generan un subespacio $S\subseteq V$, usando el proceso de Gram-Schmidt podemos obtener una base ortogonal de $S$.
+
+Si tenemos $\mathcal{B}=\left\{v_1,\dots,v_k,\dots,v_r\right\}$ base de $S$:
+\vspace{-15pt}
+\indent \begin{flalign}
+ v'_1 = v_1 && v'_k = v_k &- \sum_{i=1}^{k-1}{\frac{\phi(v_k,v'_i)}{\phi(v'_i,v'_i)} v'_i} \nonumber \\
+ v'_2 = v_2 &- \frac{\phi(v_2,v'_1)}{\phi(v'_1,v'_1)}v'_1 & v'_r = v_r &- \sum_{i=1}^{r-1}{\frac{\phi(v_r,v'_i)}{\phi(v'_i,v'_i)}
+  v'_i}& \nonumber
+\end{flalign}
+
+De tal forma que $\mathcal{B}'=\left\{v'_1,\dots,v'_k,\dots,v'_r\right\}$ es una base ortogonal de $S$.
+
+\vspace{-15pt}
+\subsubsection{Ortonormalizar}
+Para normalizar una base (en especial una base ortogonal) basta con dividir cada vector de la base por su norma, de tal forma que: \[\hat{\mathcal{B}'}=\left\{\frac{v'_1}{||v'_1||_\phi},\dots,\frac{v'_k}{||v'_k||_\phi},\dots,\frac{v'_r}{||v'_r||_\phi}\right\}\]
+
+\vspace{-15pt}
+\subsection{Base ortonormal en productos escalares}
+Si tenemos una base ortonormal de $V$, cualquier producto escalar definido positivo puede definirse en función de esa base, de tal forma que $\forall \; X,Y \; \in V$ expresados en esa base $\phi(X,Y)=XAY^t=XY^t$, ya que:
+\[ A=\left[\begin{matrix}
+\phi(v_1,v_1) && \dots && \phi(v_1,v_n) \\
+\vdots && \ddots && \vdots\\
+\phi(v_n,v_1) && \dots && \phi(v_n,v_n) \\
+\end{matrix}\right]=\left[\begin{matrix}
+||v_1||_\phi^2 && \dots && 0 \\
+\vdots && \ddots && \vdots\\
+0 && \dots && ||v_n||_\phi^2 \\
+\end{matrix}\right]=\left[\begin{matrix}
+1 && \dots && 0 \\
+\vdots && \ddots && \vdots\\
+0 && \dots && 1 \\
+\end{matrix}\right] = I\]
+
+\vspace{-15pt}
+\section{Complemento ortogonal y proyecciones (II)}
+Sea $V$ un espacio vectorial y $\phi$ un producto escalar definido positivo.
+
+\vspace{-15pt}
+\subsection{Complemento ortogonal}
+Si tenemos un subespacio $S$ de dimensión $r$ de $V$, tal que $S=\left<v_1,\dots,v_r\right>$, donde los vectores $w_i$ forman una base ortogonal.
+
+A su vez podemos extender $S$ a $V$ incluyendo $n-r$ vectores, los cuales si son perpendiculares formarán una base perpendicular de $V$ tal que $V=\left<v_1,\dots,v_r,v_{r+1},\dots,v_n\right>$.
+
+\noindent Si ahora definimos $S^{\perp_\phi}=\left\{w \in V \: \vert \: \phi(w,v)=0 \;\; \forall v \in S\right\}$, podemos ver que:
+\vspace{-10pt}
+\[\mbox{Si } w=\sum_{k=1}^n{\lambda_kv_k} \in V, \mbox{ pero imponemos que } w\in S^{\perp_\phi} \implies \phi(w,v_i)=0 \;\; \forall \; 1\leq i\leq r\]
+\vspace{-15pt}
+\[0=\sum_{k=1}^n{\lambda_k \phi(v_k,v_i)}=\lambda_i \phi(v_i,v_i)=0 \implies \lambda_i=0 \;\; \forall \; 1\leq i\leq r, \;\;\;\;\;\;\; w=\sum_{k=r+1}^n{\lambda_k v_k}\]
+
+\noindent De tal forma que $S^{\perp_\phi}=\left<w_{r+1},\dots,w_n\right>$ y se observa que $S\oplus S^{\perp_\phi}=V$ y que $S\cap S^{\perp_\phi}=\mathbb{0}$, por lo que son subespacios complementarios.
+
+\vspace{-15pt}
+\subsection{Proyecciones}
+Sean $S$ y $T$ dos subespacios complementarios de $V$, de tal forma que $S\oplus T=V$ y que $S\cap T=\mathbb{0}$, es trivial, por bases, que $\forall v \in V \rightarrow v=s+t, \;\; s\in S, t\in T$, es decir que todo vector de $V$ puede expresarse como la suma de un vector de $S$ y otro de $T$ de forma única.
+
+Es ahora cuando podemos definir la siguiente transformación $P: V\rightarrow V$ tal que si $v=s+t$, $P(v)=s$, y es trivial que $P(\lambda v+\eta v')= \lambda P(v) + \eta P(v')$, por lo que se trata de una transformación lineal.
+
+Lo que es más interesante es que $P(P(v))=P(s)=s=P(v) \;\; \forall v$, es decir, que $P\circ P=P$, que es precisamente la propiedad que caracteriza a estas funciones, las proyecciones.
+
+Se observa que la transformación $Q=I-P$ que corresponde a $Q(v)=v-P(v)=t$ es también una proyección, puesto que $(I-P)\circ(I-P)=I\circ I -P\circ I -I\circ P + P \circ P= I -2P +P=I-P$, como son lineales, la composición (el producto de matrices) es distributivo, de tal forma que llegamos a $Q\circ Q=Q$.
+
+\vspace{-15pt}
+\subsubsection{Proyecciones ortogonales}
+Como se ha visto anteriormente, cualquier espacio vectorial admite una base ortogonal, y también que para cada subespacio podemos definir su complemento ortogonal.
+
+De esta forma, definimos $P: V\rightarrow S$ de tal forma que $\forall w \in V, \;\; w= s+s^{\perp_\phi}$, de tal forma que $P(w)=s$ y como hemos visto anteriormente, $P(w)=\sum_{k=1}^{r}{\frac{\phi(w,v_k)}{\phi(v_k,v_k)} v_k}$ donde los $v_k$ son los vectores de una base ortogonal de $S$.
+
+\vspace{-15pt}
+\subsubsection{Simetrias}
+
+De la misma forma definimos $S(v)= s-t$, la simetría con respecto al subespacio $S$, al igual que antes se observa que es lineal, y se observa que $S(S(v))=S(s-t)=s+t=v$ $\forall v$, es decir, $S \circ S = I$, que caracteriza a estas funciones, las simetrías.
+
+\vspace{-30pt}
+\section{Formas hermíticas}
+Sea $V$ un espacio vectorial con cuerpo de escalares en los complejos.
+\vspace{-15pt}
+\subsection{Características de las formas hermíticas}
+Una función $\phi:V\times V\rightarrow \mathbb{C}$ se dice hermítica si posee las siguientes propiedades:
+\vspace{-10pt}
+\begin{itemize}
+	\item[1)] $\phi(v,w) = \compconj{\phi(w,v)}$
+	\vspace{-10pt}
+    \item[2)] $\phi(-,w): V \rightarrow \mathbb{C}$ es lineal
+    \vspace{-10pt}
+    \item[3)] $\phi(v,-): V \rightarrow \mathbb{C}$ cumple que $\phi(v,\lambda w_1 + \eta w_2)=\compconj{\lambda}\phi(v,w_1)+\compconj{\eta}\phi(v,w_2)$
+\end{itemize}
+Las ultimas dos propiedades se resumen en $\phi(\alpha v,\lambda w_1 + \eta w_2)=\alpha\left(\compconj{\lambda}\phi(v,w_1)+\compconj{\eta}\phi(v,w_2)\right)$.
+
+\noindent La propiedad más interesante de las formas hermíticas es que $\phi(v,v)=\compconj{\phi(v,v)}$, lo cual implica necesariamente que $\phi(v,v)\in \mathbb{R}$.
+\vspace{-15pt}
+\subsubsection{Formas hermíticas definindas positivas}
+Una forma hermítica es definida positiva si $\forall v \in V$, $\phi(v,v)\geq 0$ y $\phi(v,v)=0 \iff v=\mathbb{0}$
+
+\vspace{-15pt}
+\subsection{Forma genérica}
+Sea $V$ un espacio vectorial de dimensión $n$ y cuerpo de escalares $\mathbb{C}$ y $\phi: V \times V \rightarrow \mathbb{C}$ una forma hermítica. Sean $X=(x_1,\dots,x_n)$ e $Y=(y_1,\dots,y_n)$ vectores fila de $V$ expresados una base genérica de $V$, $\mathcal{B}=\{v_1,\dots,v_n\}$, tal que $X=\sum_{k=1}^{n}{x_k v_k}$ e $Y=\sum_{k=1}^{n}{y_k v_k}$, entonces:
+
+
+\vspace{-10pt}
+\[ \phi(X,Y)=\phi\left(\sum_{i=1}^{n}{x_i v_i},\sum_{j=1}^{n}{y_j v_j}\right)=\sum_{i=1}^{n}{x_i \phi\left( v_i, \sum_{j=1}^{n}{y_j v_j} \right)} = \sum_{i=1}^{n}{\sum_{j=1}^{n}{x_i \compconj{y_j} \phi\left( v_i, v_j \right)}}= X A \compconj{Y}^t\]
+\vspace{-10pt}
+\[ A=\left[\begin{matrix}
+\phi(v_1,v_1) && \dots && \phi(v_1,v_n) \\
+\vdots && \ddots && \vdots\\
+\phi(v_n,v_1) && \dots && \phi(v_n,v_n) \\
+\end{matrix}\right] = [a_{ij} = \phi(v_i,v_j) \;\; \forall \; 1 \leq i,j \leq n] \]
+
+Para que la forma sea hermítica, $\phi(v_i,v_j) = \compconj{\phi(v_i,v_j)}$, lo que implica que las entradas diagonales de la matriz son números reales y que $A^t=\compconj{A}$, lo que se llama una matriz hermítica. Como $det(A)=det(A^t)=det(\compconj{A}) \implies det(A)\in \mathbb{R}$
+
+\noindent Igual que antes, podemos establecer un isomorfismo entre las formas y matrices hermíticas.
+\[ \underbrace{\left\{ \phi \;\; \vert \;\; \phi: V \times V \rightarrow \mathbb{C} \;\; \mbox{hermítica} \right\}}_{\mbox{espacio vectorial}}  \simeq \mathcal{M}_{n \times n} (\mathbb{C}) : A^t=\compconj{A} \;\;\;\;\;\; \mbox{(isomorfismo)}\]
+
+\vspace{-15pt}
+\subsubsection{Criterio de Sylvester}
+El criterio de Sylvester determina si un producto escalar $\phi$ sobre $\mathbb{C}$ es definido positivo.
+ 
+\noindent Sea $\phi(X,Y)=XA\compconj{Y}^t$, A hermítica, entonces $\phi$ es definido positivo si y solo si:
+
+\vspace{-20pt}
+\[a_{11}>0, \dots ,det(A_{i})>0, \dots,|A|>0, \;\;\;\; A_{i}=
+    \left[\begin{matrix}
+    a_{11} && \dots && a_{1i} \\
+    \vdots && \ddots && \vdots  \\
+    a_{1i} && \dots && a_{ii}
+    \end{matrix}\right]
+    \;\; \forall \;\; 1\leq i\leq n
+    \]
+
+
+\vspace{-35pt}
+\subsubsection{Cambios de base}
+Sean $\mathcal{B}=\{v_1,\dots,v_n\}$ y $\mathcal{B}'=\{v'_1,\dots,v'_n\}$ bases de $V$ de tal forma que los vectores de $\mathcal{B}'$ están expresados en la base $\mathcal{B}$, se da $X^t=B(X')^t\rightarrow X=X'B^t$, donde $B$ es la matriz de cambio de base de $\mathcal{B}'$ a $\mathcal{B}$ con los vectores de la primera en función de la segunda como columnas, así podemos observar que $A'=B^tA\compconj{B}$:
+
+\vspace{-25pt}  
+\[ \phi(X,Y)=\phi(X'B^t,Y'B^t)=(X'B^t)A\compconj{(Y'B^t)}^t=X'(B^tA\compconj{B})(Y')^t=X'A'(\compconj{Y'})^t=\phi(X',Y')\]
+
+\vspace{-25pt}
+\subsection{Norma hermítica}
+Al igual que en el caso real, si tenemos una forma hermítica definida positiva, podemos construir una norma $||\;||_\phi: V_{\mathbb{C}}\rightarrow \mathbb{R}^+_0$, que cumpla las propiedades previamente citadas, con la particularidad de que $||\lambda v||_\phi=||\lambda||\cdot||v||_\phi$, es decir el valor aboluto se sustituye por su equivalente en los complejos, la norma de un complejo.
+
+De nuevo, usaremos la norma euclídea, definida como $||v||_\phi=\sqrt{\phi(v,v)}$, que verifica todas las propiedades, además del Teorema de Pitágoras y la Desigualdad de Schwarz.
+
+
+\vspace{-15pt}
+\subsection{Ortogonalidad}
+Tanto la perpendicularidad como la ortonormalidad se definen de la misma manera, pero para productos hermíticos, en general trataremos con productos definidos positivos.
+
+Todas las propiedades y procesos demostrados con productos escalares, como puede ser la independencia lineal de los vectores ortogonales, el proceso de Gram-Schmidt y derivados se mantienen en gran parte iguales, excepto en el orden de las entradas de los productos, mientras que los productos escalares son simétricos, los hermíticos no lo son, por lo que cuando en las demostraciones fijamos una de las entradas para un vector, esa entrada debe ser la segunda, mientras que donde vamos a desarrollar la linearidad del producto va a ser en la primera entrada.
+
+Todas las propiedades demostradas usando únicamente la norma euclidea o productos hermíticos de la forma $\phi(v,v)$ no se ven alteradas.
+
+\vspace{-15pt}
+\section{Espacio dual}
+\vspace{-10pt}
+Sea $V$ un espacio vectorial de dimensión $n$ y cuerpo de escalares $\mathbb{K}$.
+
+definimos $T: V \rightarrow \mathbb{K}$ lineal de tal forma que:
+
+\vspace{10pt}
+\hspace{10pt}
+$\left\{\begin{matrix}
+v_1 \rightarrow \alpha_1 \\
+\vdots \\
+v_n \rightarrow \alpha_n
+\end{matrix}\right.$
+\hspace{10pt}
+Dónde $\mathcal{B}=\left\{ v_1 , \dots, v_n \right\}$ es base de $V$.
+
+\vspace{10pt}
+Si $\vec{x} = x_1 v_1 + \dots + x_n v_n $, entonces $T(x)=x_1\alpha_1 + \dots + x_n\alpha_n$
+
+\noindent De tal forma definimos el espacio dual de $V$ como $V^* := \left\{T \: \vert \: T: V \rightarrow \mathbb{K} \mbox{ lineal} \right\}$, es decir el conjunto todas las posibles transformaciones lineales de $V$ a $\mathbb{K}$.
+
+\vspace{-15pt}
+\subsection{Base de $V^*$}
+
+Podemos definir $V^*$ como un espacio vectorial de tal forma que existe una noción de suma tal que si $\gamma=\lambda_1\gamma_1+\dots+\lambda_n\gamma_n$, entonces $\gamma(x)=\lambda_1\gamma_1(x)+\dots+\lambda_n\gamma_n(x)$.
+
+De esta forma, fijada una base $\mathcal{B}=\{v_1,\dots,v_n\}$ de $V$, podemos crear una base de $V^*$, por ejemplo, la canónica $\zeta=\{\eta_1,\dots,\eta_n\}$ tal que $\eta_i: V \rightarrow \mathbb{K} \: \vert \: \eta_i(v_j)=\delta_{i,j}$.
+
+Así concluimos que $Dim(V^*)=Dim(V)$, puesto que una base de $V^*$ tiene exactamente el mismo número de elementos que una base de $V$.
+
+Podriamos haber formado cualquier otra base arbitraria, y podemos formar cualquier base como combinación lineal de esa base, de tal forma que $L=\alpha_1\eta_1+\dots+\alpha_n\eta_n$ $\forall L \in V^{*}$.
+
+\vspace{-15pt}
+\subsection{Biyección entre $V^*$ y $V$}
+Sea $V$ un espacio vectorial con cuerpo $\mathbb{R}$ o $\mathbb{C}$, lo vamos a asociar con un $\phi$ producto escalar en $\mathbb{R}$ o hermítico en $\mathbb{C}$ definidos positivos de tal forma que tendremos el par $(V,\phi)$.
+
+Definiremos una biyección entre $V^*$ y $V$, de la forma $\alpha(v)=\{\phi(-,v): V \rightarrow \mathbb{K}\} \in V^*$. De tal forma que dado un $\gamma \in V^*$, existe un único $v \in V$ tal que $\alpha(v)=\phi(-,v)=\gamma$.
+
+\vspace{-15pt}
+\subsubsection{Isomorfismo en el caso $\mathbb{R}$}
+\vspace{-5pt}
+Primero necesitamos ver que $\alpha$ es lineal, de tal forma que $\alpha(\lambda v + \eta w)= \lambda \alpha(v) + \eta \alpha(w)$:
+\vspace{-10pt}
+\[\alpha(\lambda v + \eta w) = \phi(-,\lambda v + \eta w)=\lambda \phi(-,v)+\eta \phi(-,w)=\lambda \alpha(v) + \eta \alpha(w)\]
+
+\vspace{-10pt}
+\noindent Conociendo que es lineal, y que es entre espacios de misma dimensión, para ver que se trata de una biyección basta con ver que $\alpha$ es injectiva, es decir $\alpha(v)=\mathbb{0} \iff v=\mathbb{0}$, dicho de otro modo, $\phi(w,v)=0 \; \forall w \in V  \iff v=\mathbb{0}$.
+Esto es evidentemente cierto puesto que $\phi$ es un producto escalar definido positivo, lo que implica que no es degenerado.
+\pagebreak
+\phantom{.}
+\vspace{-550pt}
+\[ \underbrace{\left\{ \gamma \;\; \vert \;\; \gamma: V \rightarrow \mathbb{R} \;\; \mbox{lineal} \right\} = V^*}_{\mbox{espacio vectorial}}  \simeq (V,\phi) \;\;\rightarrow\;\; \alpha(v)=\{\phi(-,v): V \rightarrow \mathbb{K}\} \in V^*\]
+
+De esta forma, dado un $v\in V$, podemos definir una función $\alpha:V\rightarrow V^*$ que se observa que presenta la misma estructura de espacio vectorial (isomorfismo) que $V^*$ puesto que que $\phi$ es siempre lineal en la segunda entrada.
+
+\vspace{-15pt}
+\subsubsection{Biyección en el caso $\mathbb{C}$}
+En $\mathbb{C}$, $\alpha$ no es lineal (pero $\phi$ en la primera entrada sí), sino hermítica, de tal forma que $\alpha(\lambda v + \eta w)= \compconj{\lambda} \alpha(v) + \compconj{\eta} \alpha(w)$:
+\vspace{-10pt}
+\[\alpha(\lambda v + \eta w) = \phi(-,\lambda v + \eta w)=\compconj{\lambda} \phi(-,v)+\compconj{\eta} \phi(-,w)=\compconj{\lambda} \alpha(v) + \compconj{\eta} \alpha(w)\]
+
+\vspace{-10pt}
+\noindent Conociendo que es hermítica, y que es entre espacios de misma dimensión, para ver que se trata de una biyección basta con ver que $\alpha$ es injectiva, que se demuestra de la misma forma que antes, puesto que $\phi$ es un producto hermítico definido positivo.
+\vspace{-10pt}
+\[ \underbrace{\left\{ \gamma \;\; \vert \;\; \gamma: V \rightarrow \mathbb{C} \;\; \mbox{lineal} \right\} = V^*}_{\mbox{espacio vectorial}} \rightarrowtail  (V,\phi) \;\;\rightarrow\;\; \alpha(v)=\{\phi(-,v): V \rightarrow \mathbb{C}\} \in V^*\]
+
+No es isomorfismo por que a cada $\gamma$ no le corresponde directamente $v$, sino su conjugado.
+
+\vspace{-20pt}
+\section{Operadores}
+
+\vspace{-15pt}
+\subsection{Operadores adjuntos}
+
+Fijado un endomorfismo $A: V \rightarrow V$ y $\phi$ producto escalar o hermítico definido positivo en $\mathbb{R}$ o $\mathbb{C}$ ($\mathbb{K}$).
+Podemos componer estas funciones tal que $\gamma(v)=\phi(A(v),w)$, entonces $\gamma: V  \stackrel{\mathclap{A}}  \rightarrow V \stackrel{\mathclap{\phi}} \rightarrow \mathbb{K}$, de tal forma que $\gamma \in V^*$, pues la composición de formas lineales es lineal.
+
+Así podemos concluir que debe haber un $v_0$ tal que $\gamma(v)=\phi(A(v),w)=\phi(v,v_0)$, gracias a la biyección previamente definida.
+
+Entonces definimos una función $A^*: V \rightarrow V$ de tal forma que $\phi(A(v),w)=\phi \left( v,A^*(w) \right)$, tal que $A^*(w)=v_0$. Llamaremos a esta función la adjunta de A.
+
+\noindent Podemos ver que $A^*$ es lineal de la siguiente forma.
+
+\vspace{-25pt}
+\begin{flalign*}
+\phi(A(v),\lambda w_1 + \eta w_2) =& \; \phi \left( v,A^*(\lambda w_1 + \eta w_2) \right) \\
+\phi(A(v),\lambda w_1 + \eta w_2) =& \; \lambda \phi(A(v),w_1) + \eta \phi(A(v),w_2) = \lambda \phi \left(v,A^*(w_1)\right) + \eta \phi \left(v,A^*(w_2)\right) = \\
+= & \; \phi \left(v,\lambda A^*(w_1) + \eta A^*(w_2)\right)
+\end{flalign*}
+
+
+\vspace{-10pt}
+\noindent En productos hermíticos, al sacar los escalares los conjugamos, pero al volver a introducirlos deshacemos la conjugación, resultando en la misma igualdad.
+ 
+Así, $A^*\left(\lambda w_1 + \eta w_2 \right) = \lambda A^*(w_1) + \eta A^*(w_2)$, y por lo tanto $A^*$ es lineal.
+
+\vspace{-15pt}
+\subsubsection{Matriz de $A^*$}
+
+Sea $\mathcal{B}$ base ortonormal con respecto a $\phi$, tenemos $\phi(X,Y)=XY^t \; (\mathbb{R}), \; \phi(X,Y)=X\compconj{Y}^t \; (\mathbb{C})$. Si $M$ es la matriz de $A$ en base $\mathcal{B}$, entonces $A(X^t)=MX^t$ ($X$ vector fila), de esta forma:
+
+\vspace{-25pt}
+\begin{flalign*}
+\mathbb{R}:& \;\phi([A(X^t)]^t,Y)=(MX^t)^tY^t=XM^tY^t=X(YM)^t=\phi\left(X,(M^tY^t)^t\right) \implies M^*=M^t\\
+\mathbb{C}:& \;\phi([A(X^t)]^t,Y)=(MX^t)^t\compconj{Y}^t=XM^t\compconj{Y}^t=X\compconj{\compconj{M^t}Y^t}=X\compconj{Y\compconj{M}}^t=\phi\left(X,(\compconj{M}^tY^t)^t\right) \implies M^*=\compconj{M^t}
+\end{flalign*}
+Además definimos que una transformación lineal es autoadjunta $\iff$ $A=A^*$, lo que significa que si están expresadas en la misma base, $M=M^*$, para bases ortonormales esto ocurre cuando $M=M^t$ (simétricas) en $\mathbb{R}$ y $M=\compconj{M^t}$ (hermíticas) en $\mathbb{C}$.
+
+\noindent Si $\mathcal{B}$ una base cualquiera, tenemos $\phi(X,Y)=XTY^t \; (\mathbb{R}), \; \phi(X,Y)=XT\compconj{Y}^t \; (\mathbb{C})$. Si $M$ es la matriz de $A$ en base $\mathcal{B}$, entonces $A(X^t)=MX^t$ ($X$ vector fila), de esta forma:
+
+\vspace{-25pt}
+\begin{flalign*}
+\mathbb{R}:& \;\phi([A(X^t)]^t,Y)=(MX^t)^tTY^t=XM^tTY^t=XTM^* Y^t=\phi\left(X,(M^* Y^t)^t\right) \implies TM^*=M^tT\\
+ & \;\;\;\;\;\;\;\;\;\; M^*=T^{-1} M^t T \\
+\mathbb{C}:& \;\phi([A(X^t)]^t,Y)=(MX^t)^tT\compconj{Y}^t=XM^t T\compconj{Y}^t=XT\compconj{M^* Y^t}=\phi\left(X,(M^* Y^t)^t\right) \implies T\compconj{M^*}=M^tT \\
+ & \;\;\;\;\;\;\;\;\;\; M^*=\compconj{T^{-1} M^t T} \\
+\end{flalign*}
+\vspace{-75pt}
+\subsubsection{Propiedades de la adjunta}
+De la siguiente forma se ve que $(AC)^*=C^*A^*$:
+\vspace{-10pt}
+\begin{flalign*}
+\phi(AC(v),w) =& \; \phi(v,(AC)^*(w)) \\
+\phi(AC(v),w) =& \; \phi(C(v),A^*(w))=\phi(v,C^*(A^*(w)))=\phi(v,C^*A^*(w))
+\end{flalign*}
+
+\noindent Por otro lado tenemos que $(A+C)^*=A^*+C^*$:
+\vspace{-10pt}
+\begin{flalign*}
+\phi\left((A+C)(v),w\right) =& \; \phi(v,(A+C)^*(w)) \\
+\phi\left((A+C)(v),w\right) =& \; \phi(A(v)+C(v),w)=\phi(A(v),w)+\phi(C(v),w)= \\
+= & \; \phi(v,A^*(w))+\phi(v,C^*(w))=\phi(v,A^*(w)+C^*(w))
+\end{flalign*}
+
+\noindent También tenemos que $(f^{-1})^*=(f^{*})^{-1}$:
+\vspace{-10pt}
+\begin{flalign*}
+\phi\left((f^{-1})(v),w\right) =& \; (A^{-1} X^t)^t T Y^t = X (A^{-1})^t T Y^t = X T (A^{-1})^* Y^t = \phi\left(v,(f^{-1})^*(w)\right) \\
+ & \; (A^{-1})^t T = T (A^{-1})^* \implies (A^{-1})^* = T^{-1} (A^{-1})^t T = (T^{-1} A^t T)^{-1} = (A^*)^{-1}
+\end{flalign*}
+
+\noindent Unas propiedades importantes son $(\mbox{Im } f)^{\perp_\phi} = \mbox{Ker } f^*$ y $(\mbox{Im } f^*)^{\perp_\phi} = \mbox{Ker } f$:
+\vspace{-10pt}
+\begin{flalign*}
+\phi\left(f(w),v\right) = \mathbb{0} = \phi\left(w,f^*(v)\right)\;\; \forall w \in V; \; \forall v \in (\mbox{Im } f)^{\perp_\phi} \implies (\mbox{Im } f)^{\perp_\phi} = \mbox{Ker } f^*\\
+\phi\left(v,f^*(w)\right) = \mathbb{0} = \phi\left(f(v),w\right)\;\; \forall w \in V; \; \forall v \in (\mbox{Im } f^*)^{\perp_\phi} \implies (\mbox{Im } f^*)^{\perp_\phi} = \mbox{Ker } f
+\end{flalign*}
+
+\vspace{-25pt}
+\subsection{Operadores unitarios (I)}
+
+Se dice que un endomorfismo (operador) $f:V\rightarrow V$ es unitario con respecto a un $\phi$ definido positivo (métrica) $\iff$ $\phi(f(v),f(w))=\phi(v,w)$.
+
+Con esta definición se observa que $v \perp_\phi w \implies f(v) \perp_\phi f(w)$ y que $||v||_\phi=||f(v)||_\phi$. De esto último se deduce que $f(v)=\mathbb{0} \iff v=\mathbb{0}$, por lo que es injectivo (e isomorfismo).
+
+\noindent Sea $\mathcal{B}$ base ortonormal con respecto a $\phi$, tenemos $\phi(X,Y)=XY^t \; (\mathbb{R}), \; \phi(X,Y)=X\compconj{Y}^t \; (\mathbb{C})$. Si $M$ es la matriz de $f$ en base $\mathcal{B}$, entonces $f(v)=Mv$, de esta forma:
+
+\vspace{-25pt}
+\begin{flalign*}
+\mathbb{R}:& \;\phi([f(X^t)]^t,[f(Y^t)]^t)=(MX^t)^t(MY^t)=XM^tMY^t=\phi\left(X,Y\right) \implies M^{t} M = I\\
+\mathbb{C}:& \;\phi([f(X^t)]^t,[f(Y^t)]^t)=(MX^t)^t\compconj{MY^t}=XM^t\compconj{M}\compconj{Y^t}=\phi\left(X,Y\right) \implies M^{t} \compconj{M} = \compconj{M^{t}} M = I
+\end{flalign*}
+ 
+Esto equivale a $M^t=M^{-1}$ en $\mathbb{R}$ y a $M^t=\compconj{M}^{-1}$ o $\compconj{M^t}=M^{-1}$  en $\mathbb{C}$, a estas matrices se las llama ortogonales y unitarias, respectivamente, sus columnas son ortonormales entre sí.
+
+En general $M^*M=I$ y $M^*=M^{-1}$.
+
+\noindent Sea $\mathcal{B}$ base cualquiera, tenemos $\phi(X,Y)=XTY^t \; (\mathbb{R}), \; \phi(X,Y)=XT\compconj{Y}^t \; (\mathbb{C})$. Si $M$ es la matriz de $f$ en base $\mathcal{B}$, entonces $f(v)=Mv$, de esta forma:
+
+\vspace{-25pt}
+\begin{flalign*}
+\mathbb{R}:& \;\phi([f(X^t)]^t,[f(Y^t)]^t)=(MX^t)^tT(MY^t)=XM^tTMY^t=\phi\left(X,Y\right) \implies M^{t}T M = T\\
+& \;\;\;\;\;\;\;\;\;\; (T^{-1} M^t T)M=M^* M =I ; \;\;\;\; M^* = M^{-1}\\
+\mathbb{C}:& \;\phi([f(X^t)]^t,[f(Y^t)]^t)=(MX^t)^tT\compconj{MY^t}=XM^tT\compconj{M}\compconj{Y^t}=\phi\left(X,Y\right) \implies M^{t} T \compconj{M} = T\\
+& \;\;\;\;\;\;\;\;\;\; (T^{-1} M^t T)\compconj{M}=\compconj{M^* M}=I ; \;\;\;\; M^* = M^{-1}\\
+\end{flalign*}
+\vspace{-65pt}
+\subsubsection{$f$ transforma bases ortonormales}
+
+Sea $\mathcal{B}=\{v_1,\dots,v_n\}$ base ortonormal respecto a $\phi$, afirmamos que $\mathcal{B}'=\{f(v_1),\dots,f(v_n)\}$ también es ortonormal $\left(\phi(f(v_i),f(v_j))=\delta_{i,j}=\phi(v_i,v_j)\right)$. Sean $v=\sum{x_i v_i}$ y $w=\sum{y_j v_j}$.
+
+\vspace{-25pt}
+\begin{flalign*}
+\phi(f(v),f(w))&=\phi\left(\sum{x_i f(v_i)},\sum{y_j f(v_j)}\right)=\sum{\sum{x_i y_j \phi\left(f(v_i),f(v_j)\right)}}\\
+&= \sum{\sum{x_i y_j \phi\left(v_i,v_j\right)}}=\phi\left(\sum{x_i v_i},\sum{y_j v_j}\right)=\phi(v,w)\\
+\end{flalign*}
+
+\vspace{-30pt}
+En el caso compeleto al sacar $y_j$ lo conjugamos pero luego cuando lo volvemos a introducir, deshacemos la conjugación, así que nos queda la misma igualdad.
+
+De esta forma, $\mathcal{B}'$ es base ortonormal $\iff$ $f$ es unitario.
+
+\noindent Así se puede observar que, por ejemplo, las simetrías ortogonales o las rotaciones son transformaciones unitarias.
+
+\vspace{-20pt}
+\section{Eigentheory}
+\vspace{-15pt}
+\textbf{DISCLAIMER:} Usaré la nomenclatura \textit{eigen-}, en castellano se traduce como \textit{auto-}.
+\vspace{-25pt}
+\subsection{\textit{Eigenvalues} y \textit{Eigenvectors}}
+Sea $f: V \rightarrow V$ una transformación lineal, $\textbf{v} \neq \mathbb{0}$ es un \textit{eigenvector} si existe un único $\lambda \in \mathbb{K}$, llamado \textit{eigenvalue}, tal que $f(\textbf{v}) = \lambda \textbf{v}$.
+
+De esta forma, si $f$ posee una base de \textit{eigenvectors}, es trivial ver que la matriz de $f$ en esa base es diagonal, ya que $f \left(\sum{a_i \textbf{v}_i}\right)=\sum{\lambda_i a_i \textbf{v}_i }$.
+
+De esta forma si definimos $f-\lambda I : V \rightarrow V$ y su núcleo es no trivial (dim(Ker [$f-\lambda I$])$\geq 1$) entonces $\lambda$ es \textit{eigenvalue} y los $\textbf{v} \neq \mathbb{0} \in \mbox{Ker } [f-\lambda I]$ son los \textit{eigenvectors} asociados a $\lambda$, de tal forma que a un determinado \textit{eigenvalue} le corresponde al menos un \textit{eigenvector}.
+
+\vspace{-15pt}
+\subsubsection{Propiedades (I)}
+Sean $\{\textbf{v}_i\}_{i=1}^r$ \textit{eigenvectors} con \textit{eigenvalues} $\lambda_i$ asociados tales que $\lambda_i \neq \lambda_j \;\; \forall i \neq j$, entonces forman un sistema linealmente independiente.
+\[k=1;  \; \textbf{v}_1 \mbox{ es l.i.} \;\; \rightarrow \;\; k=k+1; \;\; \{\textbf{v}_i\}_{i=1}^k \mbox{ es l.i.} \implies \{\textbf{v}_i\}_{i=1}^{k+1} \mbox{ es l.i.}\]
+\[\sum_{i=1}^{k+1}{a_i \textbf{v}_i}=\mathbb{0} \rightarrow \begin{matrix}
+(\mbox{Aplicamos } f) && \sum_{i=1}^{k+1}{ \lambda_i a_i \textbf{v}_i} =\mathbb{0}\\
+(\mbox{Multiplicamos por } \lambda_{k+1}) && \lambda_{k+1} \sum_{i=1}^{k+1}{ a_i \textbf{v}_i} =\mathbb{0}
+\end{matrix} \overbrace{\rightarrow}^{\mbox{restamos}} \sum_{i=1}^{k}{ (\lambda_i - \lambda_{k+1}) a_i \textbf{v}_i} =\mathbb{0}\] 
+
+De esta forma $\lambda_i - \lambda_{k+1} \neq 0$  $\forall i \neq k+1$ y por inducción $\sum_{i=1}^{k}{a_i \textbf{v}_i}=\mathbb{0} \iff a_i =0$, así tenemos que $a_{k+1} = 0$.      $\blacksquare$
+
+\vspace{-15pt}
+\subsection{Polinomio característico}
+
+Se define el polinomio característico de una matriz cuadrada $A$ de dimensión $n\times n$ como $P_A(x)=\mbox{det}(xI-A)= \mbox{det}(-(A-xI))=(-1)^n \mbox{det}(A-xI)$.
+
+Una propiedad importante de los polinomios característicos es que si $C=BAB^{-1}$, entonces $P_A(x)=P_C(x)$.
+\vspace{-10pt}
+\begin{flalign*}
+ P_C(x)&=\mbox{det}(BAB^{-1}-xI)=\mbox{det}(BAB^{-1}-B(xI)B^{-1})=\mbox{det}(B(A-xI)B^{-1})= \\
+ &=\mbox{det}(B)\mbox{det}(A-xI)\mbox{det}(B^{-1})=\mbox{det}(B) \mbox{det}(B^{-1}) P_A(x)=\mbox{det}(B) \mbox{det}(B)^{-1} P_A(x)=P_A(x)
+\end{flalign*}
+\vspace{-30pt}
+
+\noindent Así se puede observar que a una transformación lineal $f$ le corresponde un único $P_f(x)$, puesto que acabamos de demostrar que los polinomios característicos de matrices similares son iguales, y por lo tanto un cambio de base no altera el polinomio característico.
+
+Estas matrices se llaman equivalentes, y todas ellas tienen el mismo polinomio característico, aunque la recíproca no es necesiamente cierta.
+
+\vspace{-15pt}
+\subsubsection{Subespacios invariantes}
+Sea $f: V \rightarrow V$, se dice que $S \subset V$ es un subespacio $f$-invariante si $f(s)\in S \;\; \forall s \in S$.
+
+Podemos entonces definir una restricción $f_S : S \rightarrow S$, si dim$(S)=r$, puede entonces definirse un isomorfismo con $g: \mathbb{R}^r \rightarrow \mathbb{R}^r$, ambos con el mismo $P_{f_S}(x)=P_g(x)$ asociado.
+
+Por otro lado si $\mathcal{S}=\{s_1,\dots,s_r\}$ es base de $S$, podemos tener $\mathcal{C}=\{v_1, \dots , v_{n-r}\}$, que define al subespacio $C$, que junto a $\mathcal{S}$ forma $\mathcal{B}=\{s_1,\dots,s_r, v_1, \dots , v_{n-r}\}$ una base de $V$, de tal forma que la matriz de $f$ en $\mathcal{B}$ es de la forma:
+\vspace{-5pt}
+\[M = \left[\begin{array}{c|c}
+      A & B\\
+      \hline
+      0 & D
+    \end{array}\right]\]
+
+\vspace{-10pt}
+\begin{itemize}
+	\item[$ $] $A$ es la matriz $r \times r$ que define $f_S : S \rightarrow S$ en base $\mathcal{S}$.
+	\vspace{-10pt}
+    \item[$ $] $0$ es una matrix $(r-n)\times r$ de 0s, puesto que $f$ solo manda vectores de $S \rightarrow S$.
+    \vspace{-10pt}
+    \item[$ $] $B$ es una matrix $r\times (r-n)$ cualquiera  que indica a donde manda $f: C \rightarrow S$.
+    \vspace{-10pt}
+    \item[$ $] $D$ es una matriz $(r-n) \times (r-n)$ cualquiera que indica a donde manda $f: C \rightarrow C$.
+\end{itemize} 
+
+Es facil ver que $\mbox{det}(M)=\mbox{det}(A)\mbox{det}(D)$, contemplando dos casos, si $\mbox{det}(A)=0$ o $\mbox{det}(D)=0$, entonces es facil ver que hay al menos una columna o fila linearmente dependiente de alguna(s) otra y entonces el determinante goblal debe ser 0. Por otro lado si ambas matrices son invertibles, se pueden realizar operaciones elementales para convertir $A$ y $D$ en matrices triangulares superiores, cada una de forma independiente, de tal forma que $B$ resulta irrelevante y el determinante es meramente el producto de las entradas diagonales que son a su vez los determinantes de $A$ y $D$.
+
+De esta forma llegamos a la conclusión de que $P_f(x)=P_{f_S}(x) \cdot h(x)$, de tal forma que $P_{f_S}(x)$ divide a $P_f(x)$.
+
+\vspace{-15pt}
+\subsubsection{Forma del polinomio en $\mathbb{R}$}
+
+Se observa además que las raices del $P_f(x)$ de $f$ deben de ser los \textit{eigenvalues} $\lambda_i$ de $f$, puesto que son las soluciones a $P_f(x)=(-1)^n \mbox{det}(A-xI)=0$
+
+Un polinomio característico de grado $n$ en $\mathbb{R}$ tiene la siguiente expresión general:
+\[P_f(x)=\prod^r_i{(x-\lambda_i)^{a_i}} \prod^{n - \sum_i^r{a_i}}_j {(x^2 + b_j x + c_j)}; \;\;\; b_j^2 -4 c_j < 0\]
+Donde $\lambda_i$ son los $r$ \textit{eigenvalues} de $f$ y $a_i$ es lo que se denomina multiplicidad algebraica del \textit{eigenvalue} $\lambda_i$. $ x^2 + b_j x + c_j$ son los polinomios irreducibles de grado 2. La suma de todos los grados (o multiplicidades) da $n$.
+
+\vspace{-15pt}
+\subsubsection{Forma del polinomio en $\mathbb{C}$}
+
+Un polinomio característico de grado $n$ en $\mathbb{R}$ tiene la siguiente expresión general:
+\[P_f(x)=\prod^r_i{(x-\lambda_i)^{a_i}}\]
+Donde $\lambda_i$ son los $r$ \textit{eigenvalues} de $f$ y $a_i$ es lo que se denomina multiplicidad algebraica del \textit{eigenvalue} $\lambda_i$, la suma de las multiplicidades algebraicas debe ser $n$.
+
+\vspace{-15pt}
+\subsection{Diagonalización}
+
+Si tomamos un \textit{eigenvalue} $	\lambda_i$ con multiplicidad algebraica $a_i$, $(-1)^n \mbox{det}(A-\lambda_i I)=0$, lo que implica, como hemos visto antes, que $d_i = $ dim(Ker [$f-\lambda_i I$])$\geq 1$ y además Ker [$f-\lambda_i I$] forma un subespacio invariante, puesto que esta formado por todos los vectores tales que $f(\textbf{v})=\lambda_i \textbf{v}$, los \textit{eigenvectors} asociados a $\lambda_i$. A $d_i$ se le llama multiplicidad geométrica.
+
+Sea $f_{\lambda_i}:$ Ker [$f-\lambda_i I$] $\rightarrow$ Ker [$f-\lambda_i I$], sabemos que todo vector de Ker [$f-\lambda_i I$] es \textit{eigenvector} de $\lambda_i$, y que su dimensión es $d_i$, por lo tanto $P_{f_{\lambda_i}}(x)=(x-\lambda_i)^{d_i}$.
+
+Como sabemos que $P_{f_{\lambda_i}}(x)$ divide a $P_f(x)$, entonces concluimos que $1 \leq d_i \leq a_i$, es decir, que la multiplicidad geométrica es siempre mayor o igual que 1 y menor o igual que la multiplicidad algebraica.
+
+Entonces $f$ es diagonalizable $\iff$ $V=\bigoplus^r_i$ Ker [$f-\lambda_i I$] $\iff$ $\sum^r_i d_i = n$, como $d_i \leq a_i$, necesariamente llegamos a que $d_i=a_i$, es decir, para que $f$ sea diagonalizable la multiplicidad geométrica debe ser igual a la multiplicidad algebraica, y además ambas deben sumar la dimensión de $V$.
+
+Esto es debido a que entonces tenemos una base de \textit{eigenvectors} para todo $V$, en la cual la matriz es diagonal y sus entradas diagonales son los \textit{eigenvalues}. De esta forma existe una matriz de cambio de base $C$ que hace el cambio a la base de \textit{eigenvectors} tal que $D=C^{-1} A C$, donde D es la matriz diagonal de $f$ y $A$ es la matriz en otra base cualquiera.
+
+\vspace{-15pt}
+\subsection{Propiedades (II)}
+
+El polinomio característico puede expresarse de la siguiente forma:
+\[P_f(x)=x^n +\sum_{i=0}^n {a_i x^i}\]
+
+De tal forma que los coeficientes $a_i$ son invariantes bajo cambios de base y para todas las matrices similares y son intrínsecos de $f$.
+
+Un coeficiente de interés es $a_0=P_f(0)=(-1)^n \mbox{det}(A)$.
+
+Otro coeficiente es $a_{n-1}=-Tr(A)=-\sum \lambda_i$, que puede verse con la expresión del polinomio caracterísitico como determinante, las únicas entradas con polinomios son las diagonales, y la única permutación que tiene $n-1$ o más términos de la diagonal es el producto de los elementos de la diagonal, que tomando todas los posibles productos que resultan en el monomio de grado $n-1$, los que consisten de multiplicar $n-1$ por uno de los terminos independientes de cada producto que corresponden a los elementos de la diagonal, todas las combinaciones posibles dan como resultado $-Tr(A) x^{n-1}$.
+
+\vspace{-20pt}
+\section{Teoría \textit{Espectral}}
+A partir de aquí usaremos la notación $\langle\cdot{,}\cdot\rangle$ para referirnos al producto escalar o hermítico canónico en $\mathbb{R}^n$ o $\mathbb{C}^n$, pero las demostración subsiguientes son aplicables para cualquier producto escalar o hermitico definido positivo.
+
+\vspace{-15pt}
+\subsection{Autoadjuntas}
+
+
+\subsubsection{\textit{Eigenvalues} de un operador autoadjunto}
+
+Vamos a demostrar que sea $f: V \rightarrow V$ sobre $\mathbb{C}$ (o $\mathbb{R} \subset \mathbb{C}$) un operador autoadjunto, todos sus \textit{eigenvalues} (si los hay), son reales. Esto a su vez nos dice que una matriz $M_{n \times n}$ sobre $\mathbb{C}$ (o $\mathbb{R} \subset \mathbb{C}$) hermítica también tiene \textit{eigenvalues} reales, pues la podemos interpretar como la matriz de una transformación lineal en una base ortonormal.
+
+En cualquier base ortonormal, $M=\compconj{M^t}$, y en general $\langle MX {,} Y \rangle=\langle X {,} MY \rangle$, si suponemos que $X$ es un \textit{eigenvector} con \textit{eigenvalue} $\beta$, tal que $MX=\beta X$, tenemos:
+\[\langle MX {,} X \rangle=\langle X {,} MX \rangle=\langle \beta X {,} X \rangle=\langle X {,} \beta X \rangle \implies \beta \langle X {,} X \rangle=\compconj{\beta} \langle X {,} X \rangle \implies \beta = \compconj{\beta} \implies \beta \in \mathbb{R}\]
+
+\vspace{-15pt}
+\subsubsection{Subespacios invariantes de autoadjuntos}
+
+Dado $f: V \rightarrow V$ sobre $\mathbb{C}$ (o $\mathbb{R} \subset \mathbb{C}$) un operador autoadjunto y sea $S$ un subespacio invariante, $f_S : S \rightarrow S$ es autoadjunta, pues $\langle f(u) {,} v \rangle=\langle u {,} f(v) \rangle \;\; \forall u,v \in V \supset S$ 
+
+\vspace{-15pt}
+\subsubsection{Complementos ortogonales de subespacios invariantes}
+
+Sea $f: V \rightarrow V$ sobre $\mathbb{C}$ (o $\mathbb{R} \subset \mathbb{C}$) un operador autoadjunto y $S$ un subespacio invariante, $S^\perp$ también es invariante.
+\[\langle f(u) {,} v \rangle = 0 = \langle u {,} f(v) \rangle \;\; \forall u \in S, v \in S^\perp \implies f(v) \in S^\perp\]
+
+\vspace{-15pt}
+\subsubsection{Teorema \textit{espectral} (Autoadjuntos)}
+Dado $f: V \rightarrow V$ sobre $\mathbb{C}$ (o $\mathbb{R} \subset \mathbb{C}$) un operador autoadjunto, es diagonalizable, todos sus \textit{eigenvalues} son reales y los \textit{eigenvectors} son ortogonales (y en particular ortonormales).
+
+Vamos a hacer inducción, si $n = 1$, entonces cualquier $f$ lineal es diagonalizable, en particular un \textit{eigenvector} es uno de los $\textbf{v}$ vectores de norma 1.
+
+Como hemos visto anteriormente, todo \textit{eigenvalue} es real, lo que significa que todas las raices del polinomio caracterísitico son reales, y al menos debe haber una, así que sabemos debe existir al menos un \textit{eigenvalue} con al menos un \textit{eigenvector} asociado, el cual podemos normalizar.
+
+Entonces si $\mathcal{B}_1=\{\textbf{v}\}$ contiene a ese \textit{eigenvector}, y genera al subespacio $S$, entonces $S^\perp$ también es invariante y $f_{S^\perp}: S^\perp \rightarrow S^\perp$ es autoadjunta.
+
+Entonces por hipótesis de inducción, $f_{S^\perp}$ es diagonalizable en dimensión $n-1$ y existe base de \textit{eigenvectors} ortonormales en $S^\perp$, tal que $S \oplus S^\perp = V$ y que $\mathcal{B}=\{\textbf{v}_i\}_{i=1}^n$ es una base de \textit{eigenvectors} ortonormales y $f$ con dimensión $n$ es diagonalizable.  $\blacksquare$
+
+\vspace{-15pt}
+\subsubsection{Consecuencias}
+\vspace{-10pt}
+Dado $f: V \rightarrow V$ sobre $\mathbb{C}$ (o $\mathbb{R} \subset \mathbb{C}$) un operador autoadjunto y sea $M=M_B(f)$ la matriz de f en alguna base, tal que $M=\compconj{M^t}$ en bases ortonormales, existe matriz de cambio de base de una base ortonormal a otra, tal que $C\compconj{C^t}=I$ o $\compconj{C^t}=C^{-1}$, de tal forma que $C^{-1}MC=\compconj{C^t}MC$ es diagonal y sus entradas son reales.
+
+\vspace{-5pt}
+\paragraph{Similares}
+
+$N$ y $M$ autoadjuntas son similares $\iff$ $P_N(x)=P_M(x)$, puesto que entonces ambas son similares a la misma matriz diagonal, por lo tanto también son similares entre sí.
+
+\vspace{-5pt}
+\paragraph{Cuadrado de una autoadjunta}
+
+Si $M$ es autoadjunta, $M^2 \textbf{v}=M(M\textbf{v})=M(\lambda \textbf{v})=\lambda^2 \textbf{v}$ para todos sus \textit{eigenvectors} y \textit{eigenvalues}, de esta forma $M^2$ también es autoadjunta, puesto que $\langle M^2 \textbf{x} {,} \textbf{y} \rangle = \langle MM\textbf{x} {,} \textbf{y} \rangle = \langle M \textbf{x} {,} M\textbf{y} \rangle = \langle  \textbf{x} {,} MM\textbf{y} \rangle=\langle \textbf{x} {,} M^2\textbf{y} \rangle$, y sus \textit{eigenvalues} son los cuadrados de los de $M$.
+
+\vspace{-5pt}
+\paragraph{Autoadjuntas definidas positivas}
+
+Si $M$ es autoadjunta, sea $\beta \in \mathbb{R} >0$; $(M+\beta I)\textbf{v}=(\lambda+\beta)\textbf{v}$ es autoadjunta pues es la suma de autoadjuntas y sus \textit{eigenvectors} son idénticos. De esta forma si $\beta$ es lo suficientemente grande, $M+\beta I$ define un producto escalar o hermítico definido positivo, puesto que todos los \textit{eigenvalues} serán positivos.
+
+\vspace{-5pt}
+\paragraph{Proyecciónes ortogonales}
+
+Sea $V=S\oplus S^\perp$, entonces $\textbf{v}=P(\textbf{v})+Q(\textbf{v}) \;\; \forall \ \textbf{v} \in V$ si $P(\textbf{v}) \in S$ y $Q(\textbf{v}) \in S^\perp$, se observa que $P$ (y $Q$) es autoadjunta.
+\vspace{-10pt}
+\[\langle P(v) {,} w \rangle = \langle P(v) {,} \ P(w)+Q(w) \rangle=\langle P(v) {,} \ P(w) \rangle \mbox{ y } \langle v {,} \ P(w)  \rangle =\langle P(v)+Q(v) {,} \ P(w) \rangle=\langle P(v) {,} \ P(w) \rangle\]
+
+\vspace{-10pt}
+Luego $\langle P(v) {,} w \rangle = \langle P(v) {,} \ P(w) \rangle \;\; \forall \ v,w \in V$, por lo tanto es autoadjunta.
+
+Si tomamos una base ortonormal de $S$ y una de $S^\perp$, se observa que la matriz de $P$ en esa base es diagonal tal que tiene 1 en las entradas de $S$ y 0 en las entradas de $S^\perp$, así pues, el polonimio caracterísitico de una proyección ortogononal es $P_P(x)=x^{n-s}(x-1)^s$ donde $s=\dim S$, se observa entonces que $S$ y $S^\perp$ son los \textit{eigenspaces} asociados a los \textit{eigenvalues} 1 y 0, respectivamente, y que sus bases son los \textit{eigenvectors} asociados.
+
+\vspace{-15pt}
+\subsection{Unitarios en $V\simeq \mathbb{C}^n$}
+
+Se dice que un operador $f:V\rightarrow V$ es unitario $\iff$ $\langle f(v) {,} \ f(w)\rangle=\langle v {,} \ w \rangle \;\; \forall \ v,w \in V$ $\iff$ $f^* f = I$ $\iff$ fijada base ortonormal, la matriz de $f$ cumple $\compconj{M^{t}} M = I$.
+
+Se observa que si $S\subset V$ es $f$-invariante, $f_S$ también es unitario.
+
+\noindent Si $f: V \rightarrow V$ un operador unitario y $S$ un subespacio invariante, $S^\perp$ también es invariante.
+
+Para todo $w \in S^\perp$ y $v \in S$, tenemos que $\langle v {,} f(w) \rangle=\langle f(v') {,} f(w) \rangle=\langle v' {,} w \rangle=0$.
+
+\vspace{-15pt}
+\subsubsection{\textit{Eigenvalues} de un operador unitario}
+
+\vspace{-15pt}
+Todos los \textit{eigenvalues} de un operador unitario son de la forma $\lambda_j=e^{a_j i}=\cos{a_j}+i\sin{a_j}$, es decir, complejos de módulo 1 ubicados en la circunferencia unidad.
+
+Si $\textbf{v}$ es un \textit{eigenvector}, $f(\textbf{v})=\lambda \textbf{v}$, y si $f$ es unitario, $\langle f(\textbf{v}) {,} \ f(\textbf{v})\rangle=\langle \textbf{v} {,} \ \textbf{v} \rangle$, entonces $\langle f(\textbf{v}) {,} f(\textbf{v}) \rangle=\langle \lambda \textbf{v} {,} \lambda \textbf{v} \rangle= \lambda \compconj{\lambda}\langle \textbf{v} {,} \textbf{v} \rangle$ $\implies$ $\lambda \compconj{\lambda} = |\lambda|^2 =  1$
+
+\vspace{-15pt}
+\subsubsection{Teorema \textit{espectral} (Unitarios en $V\simeq \mathbb{C}^n$)}
+
+Dado $f: V \rightarrow V$ sobre $\mathbb{C}$ (o $\mathbb{R} \subset \mathbb{C}$) un operador unitario, es diagonalizable y los \textit{eigenvectors} son ortogonales (y en particular ortonormales).
+
+Vamos a hacer inducción, si $n = 1$, entonces cualquier $f$ lineal es diagonalizable, en particular un \textit{eigenvector} es uno de los $\textbf{v}$ vectores de norma 1.
+
+Por el teorema fundamental del Álgebra, sabemos que en los complejos el polinomio característico tiene $n$ soluciones, contando multiplicidades, por lo que hay al menos un \textit{eigenvalue} al que le corresponde al menos un \textit{eigenvector}.
+
+Entonces si $\mathcal{B}_1=\{\textbf{v}\}$ contiene a ese \textit{eigenvector} normalizado, y genera al subespacio $S$, entonces $S^\perp$ también es invariante y $f_{S^\perp}: S^\perp \rightarrow S^\perp$ es unitario.
+
+Entonces por hipótesis de inducción, $f_{S^\perp}$ es diagonalizable en dimensión $n-1$ y existe base de \textit{eigenvectors} ortonormales en $S^\perp$, tal que $S \oplus S^\perp = V$ y que $\mathcal{B}=\{\textbf{v}_i\}_{i=1}^n$ es una base de \textit{eigenvectors} ortonormales y $f$ con dimensión $n$ es diagonalizable.  $\blacksquare$
+
+\subsubsection{Consecuencias}
+\vspace{-10pt}
+
+Dado $f: V \rightarrow V$ sobre $\mathbb{C}$ (o $\mathbb{R} \subset \mathbb{C}$) un operador unitario y sea $M=M_B(f)$ la matriz de f en alguna base, tal que $M=\compconj{M^t}$ en bases ortonormales, existe matriz de cambio de base de una base ortonormal a otra, tal que $C\compconj{C^t}=I$ o $\compconj{C^t}=C^{-1}$, de tal forma que $C^{-1}MC=\compconj{C^t}MC$ es diagonal y sus entradas son de la forma $\lambda_j=e^{a_j i}$.
+
+\vspace{-15pt}
+\subsection{Unitarios en $V\simeq \mathbb{R}^n$}
+
+De lo tratado anteriormente concluimos que un $f: V \rightarrow V$ unitario, si tiene \textit{eigenvalues}, estos son $\pm 1$, puesto que son los únicos complejos de la forma $e^{a_j i}$ que también son reales. Y también se mantiene que si $S$ es un subespacio invariante, $S^\perp$ también es invariante.
+
+\vspace{-15pt}
+\subsubsection{Teorema \textit{espectral} (Unitarios en $V\simeq \mathbb{R}^n$)}
+
+Dado $f: V \rightarrow V$ sobre $\mathbb{R}$ un operador unitario, $V$ puede expresarse como suma directa de subespacios invariantes ortogonales de dimensión 1 o 2.
+
+Para demostrarlo vamos a tomar el resultado obtenido previamente para $\mathbb{C}$ y lo vamos a reducir al caso $\mathbb{R}$.
+
+Todo vector de $\mathbb{C}^n$ admite una expresión de la forma $w_j = X_j + i Y_j$ donde $X_j$ e $Y_j$ $\in$ $\mathbb{R}^n$.
+
+\noindent Vamos a hacer inducción sobre la dimensión $n$, para $n=1$, $f(v)=\pm v$ y todo V es invariante.
+
+\vspace{-10pt}
+\paragraph{Caso 1} Suponiendo que $\lambda_j$ es un \textit{eigenvalue} con valor $\pm 1$, y $w_j$ un \textit{eigenvector} asociado, entonces tenemos que 
+\vspace{-10pt}
+\[f(X_j+iY_j)=\lambda_j(X_j+iY_j)\]
+Como $f$ es real, su matriz asociada en cualquier base es real, y entonces se cumple que $f(a+bi)=f(a)+i f(b)$, así llegamos a que
+\vspace{-5pt}
+\[f(X_j)+i f(Y_j) = \lambda_j X_j + i \lambda_j Y_j \implies f(X_j)=\lambda_j X_j \;\; \& \;\; f(Y_j)= \lambda_j Y_j\]
+\vspace{-5pt}
+Así pues se observa que $X_j$ e $Y_j$ son \textit{eigenvectors} reales asociados a $\lambda_j$, entonces si tomamos uno de estos, al menos uno debe ser no nulo, y entonces el subespacio que este genera, $S$, es invariante, entonces $S^\perp$ es invariante y de dimensión $n-1$, la hipótesis de inducción, por lo que se verifica el teorema en este supuesto.
+
+\vspace{-10pt}
+\paragraph{Caso 2} Suponiendo que $\lambda \neq \compconj{\lambda}$ es un \textit{eigenvalue} de la forma
+\vspace{-10pt}
+\[\lambda = e^{\alpha i} = \cos{\alpha}+i\sin{\alpha}; \;\; \alpha \in (0,2\pi)\setminus \pi\]
+\vspace{-30pt}
+
+\noindent Y $Z=X+iY$ es un \textit{eigenvector} asociado, tal que $f(Z)=\lambda Z$.
+
+\noindent $\compconj{\lambda}$ también es \textit{eigenvalue} y $\compconj{Z}$ es \textit{eigenvector} suyo, ya que el operador es real, y por lo tanto su matriz asociada $M$ también.
+\vspace{-20pt}
+\[\compconj{MZ}=\compconj{\lambda}\cdot \compconj{Z}=M\compconj{Z}\]
+\vspace{-30pt}
+
+\noindent Se observa que $Z$ y $\compconj{Z}$ son linealmente independientes por que sus autovalores son distintos, y también son perpendiculares, pues
+\vspace{-10pt}
+\[\langle Z {,} \ \compconj{Z} \rangle = \langle MZ {,} \ M\compconj{Z} \rangle = \langle \lambda Z {,} \ \compconj{\lambda Z} \rangle = \lambda^2 \langle Z {,} \ \compconj{Z} \rangle; \;\; \lambda \neq \pm 1; \ \lambda^2 \neq 1 \implies \langle Z {,} \ \compconj{Z} \rangle=0\]
+\vspace{-25pt}
+
+\noindent Sea entones $S_\mathbb{C}$ el subespacio generado por $Z$ y $\compconj{Z}$, puede encontrarse una combinación lineal tal que
+\vspace{-15pt}
+\[X = \frac{1}{2} \left(Z+\compconj{Z}\right);\;\; Y = \frac{i}{2} \left(\compconj{Z}-Z\right)\]
+\vspace{-25pt}
+
+\noindent De esta forma el subespacio $S$ de $\mathbb{R}^n$ generado por $X$ e $Y$, los cuales son linealemente independientes en $\mathbb{C}^n$, y como son reales, también lo son en $\mathbb{R}^n$ y además son perpendiculares
+\vspace{-25pt}
+\begin{flalign*}
+\langle X {,} \ Y \rangle & = \left\langle \frac{1}{2} \left(Z+\compconj{Z}\right) {,} \ \frac{i}{2} \left(\compconj{Z}-Z\right) \right\rangle = \frac{-i}{4}\langle Z+\compconj{Z} {,} \ \compconj{Z}-Z \rangle = \\
+ & = \frac{-i}{4}\left(\langle Z {,} \ \compconj{Z}\rangle - \langle Z {,} \ Z \rangle + \langle \compconj{Z} {,} \ \compconj{Z} \rangle - \langle \compconj{Z} {,} \ Z \rangle \right)= \frac{-i}{4}\left(\langle \compconj{Z} {,} \ \compconj{Z} \rangle -\langle Z {,} \ Z \rangle\right) = 0
+\end{flalign*}
+\vspace{-25pt}
+
+\noindent Ahora si desarrollamos $MZ=\lambda Z$
+\vspace{-10pt}
+\[M(X+iY)=(\cos \alpha + i \sin \alpha)(X+iY)=(X \cos \alpha - Y \sin \alpha) + i(Y \cos \alpha + X \sin \alpha)\]
+\vspace{-30pt}
+
+\noindent Como $M$ es real, entonces $M(X+iY)=MX +iMY$, y entonces llegamos a 
+\vspace{-10pt}
+\[M(X)=X \cos \alpha - Y \sin \alpha; \;\; M(Y)=Y \cos \alpha + X \sin \alpha\]
+\vspace{-30pt}
+
+De esta forma se observa que $S$ es invariante, puesto que la imagen es combinación lineal de vectores de $S$, y que la matriz de $f_S : S\rightarrow S$ en base $\mathcal{B}=\{X,Y\}$ es de la forma
+\vspace{-7pt}
+\[\left[\begin{matrix}
+\cos{\alpha} && \sin{\alpha} \\
+-\sin{\alpha} && \cos{\alpha}
+\end{matrix}\right]\]
+\vspace{-15pt}
+
+\noindent De esta forma $f$ actua como una rotación sobre $S$.
+
+\noindent Entonces, como $S$ es invariante, $S^\perp$ es invariante y de dimensión $n-2$, la hipótesis de inducción, por lo que se verifica el teorema en este supuesto, y con el caso anterior queda demostrado el teorema.  $\blacksquare$
+
+\end{document} 
