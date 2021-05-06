@@ -836,5 +836,60 @@ De esta forma se observa que $S$ es invariante, puesto que la imagen es combinac
 \noindent De esta forma $f$ actua como una rotación sobre $S$.
 
 \noindent Entonces, como $S$ es invariante, $S^\perp$ es invariante y de dimensión $n-2$, la hipótesis de inducción, por lo que se verifica el teorema en este supuesto, y con el caso anterior queda demostrado el teorema.  $\blacksquare$
+\clearpage
+\subsubsection{Consecuencias}
 
+Dado $f: V \rightarrow V$ sobre $\mathbb{R}$ un operador unitario, existe una base ortonormal tal que la matriz de $f$ en esa base tiene la forma siguiente
+\vspace{-7pt}
+\[\left[\begin{matrix}
+I_r && 0  && 0 && 0 &&0\\
+0 && -I_u && 0 && 0 && 0\\
+0 && 0 && R_{\varphi_1}&& 0 && 0\\
+0 && 0 && 0 && \ddots && 0\\
+0 && 0 && 0 && 0 && R_{\varphi_d}
+\end{matrix}\right]; \;\;
+R_{\varphi_i}=\left[\begin{matrix}
+\cos{\varphi_i} && \sin{\varphi_i}  \\
+-\sin{\varphi_i} && \cos{\varphi_i}\\
+\end{matrix}\right]; \;\; r+u+2d=n\]
+\vspace{-15pt}
+
+Donde $I_r$ es la identidad de dimensión $r$, $I_u$ es la identidad de dimensión u, y $R_{\varphi_i}$ es la rotación por un ángulo $\varphi_i=\pm \alpha_i$, donde $\alpha_i$ es el argumento de los \textit{eigenvalues} complejos en función de como ordenes la base.
+
+\vspace{-5pt}
+\paragraph{Unitarios de $\mathbb{R}^2$}
+
+Se sigue de lo anterior que para todo $f: \mathbb{R}^2 \rightarrow \mathbb{R}^2$ unitario existe una base ortonormal en la que la matriz asociada tiene alguna de estas cuatro formas
+\vspace{-7pt}
+\[\pm I_2; \;\; \left[\begin{matrix}
+1 && 0  \\
+0 && -1\\
+\end{matrix}\right]; \;\;
+\left[\begin{matrix}
+\cos{\varphi} && \sin{\varphi}  \\
+-\sin{\varphi} && \cos{\varphi}\\
+\end{matrix}\right]; \;\; \varphi \neq \{0,\pi\}\]
+Es decir, los operadores unitarios de $\mathbb{R}^2$ se pueden clasificar en, (i) la identidad, (ii) simetría con respecto a $\mathbb{0}$, (iii) una simetría sobre una recta y (iv) una rotación.
+
+\vspace{-5pt}
+\paragraph{Unitarios de $\mathbb{R}^3$}
+
+Se sigue de lo anterior que para todo $f: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ unitario existe una base ortonormal en la que la matriz asociada tiene alguna de estas formas
+\[\pm I_2; \;\;\left[\begin{matrix}
+-1 && 0  && 0\\
+0 && 1 && 0\\
+0 && 0 && 1
+\end{matrix}\right]; \;\;
+\left[\begin{matrix}
+1 && 0  && 0\\
+0 && -1 && 0\\
+0 && 0 && -1
+\end{matrix}\right]; \;\;
+\left[\begin{matrix}
+\pm 1 && 0&& 0\\
+0&&\cos{\varphi} && \sin{\varphi}  \\
+0&&-\sin{\varphi} && \cos{\varphi}\\
+\end{matrix}\right]; \;\;\varphi \neq \{0,\pi\}\]
+
+Es decir, los operadores unitarios de $\mathbb{R}^3$ se pueden clasificar en, (i) la identidad, (ii) simetría con respecto a $\mathbb{0}$, (iii) una simetría sobre un plano y (iv) simetría respecto a una recta o un giro de 180º alrededor de esta, (v) giro respecto a una recta y (vi) composición de simetría con respecto a un plano y giro respecto a una recta perpendicular a este.
 \end{document} 
