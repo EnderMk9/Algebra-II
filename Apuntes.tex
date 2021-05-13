@@ -869,7 +869,7 @@ Se sigue de lo anterior que para todo $f: \mathbb{R}^2 \rightarrow \mathbb{R}^2$
 \cos{\varphi} && \sin{\varphi}  \\
 -\sin{\varphi} && \cos{\varphi}\\
 \end{matrix}\right]; \;\; \varphi \neq \{0,\pi\}\]
-Es decir, los operadores unitarios de $\mathbb{R}^2$ se pueden clasificar en, (i) la identidad, (ii) simetría con respecto a $\mathbb{0}$, (iii) una simetría sobre una recta y (iv) una rotación.
+Es decir, los operadores unitarios de $\mathbb{R}^2$ se pueden clasificar en, (i) la identidad, (ii) simetría con respecto a $\mathbb{0}$, (iii) una simetría ortogonal sobre una recta y (iv) una rotación.
 
 \vspace{-5pt}
 \paragraph{Unitarios de $\mathbb{R}^3$}
@@ -891,5 +891,48 @@ Se sigue de lo anterior que para todo $f: \mathbb{R}^3 \rightarrow \mathbb{R}^3$
 0&&-\sin{\varphi} && \cos{\varphi}\\
 \end{matrix}\right]; \;\;\varphi \neq \{0,\pi\}\]
 
-Es decir, los operadores unitarios de $\mathbb{R}^3$ se pueden clasificar en, (i) la identidad, (ii) simetría con respecto a $\mathbb{0}$, (iii) una simetría sobre un plano y (iv) simetría respecto a una recta o un giro de 180º alrededor de esta, (v) giro respecto a una recta y (vi) composición de simetría con respecto a un plano y giro respecto a una recta perpendicular a este.
+Es decir, los operadores unitarios de $\mathbb{R}^3$ se pueden clasificar en, (i) la identidad, (ii) simetría con respecto a $\mathbb{0}$, (iii) una simetría ortogonal sobre un plano y (iv) simetría ortogonal respecto a una recta o un giro de 180º alrededor de esta, (v) giro respecto a una recta y (vi) composición de simetría ortogonal con respecto a un plano y giro respecto a una recta perpendicular a este.
+\clearpage
+
+\vspace{-20pt}
+\section{Formas cuadráticas}
+
+\vspace{-15pt}
+\subsection{Polinomios}
+Sea $\mathbb{K}$ un cuerpo y $\mathbb{K}[x_1,\dots,x_n]$ los polinomios de ese cuerpo en $n$ variables. Un $\prod x_i^{a_i}$ se dice monomio de grado $d$ si $\sum a_i = d$. De esta forma todo polinomio es combinación lineal de monomios y diremos que $P_d$ será un polinomio homogéneo de grado $d$ si es combinación lineal de monomios de grado $d$.
+
+Si ahora realizamos un cambio de variable lineal, que podemos intepretar como un cambio de base en $\mathbb{K}^n$ tal que $CX=X'$, de tal forma que $x_i' = \sum c_{ij} x_j $, como $C$ es invertible, tenemos que si $D=C^{-1}$, $x_i = \sum d_{ij} x_j'$, de esta forma tenemos el cambio de variable $\mathbb{K}[x_1,\dots,x_n]=\mathbb{K}[x'_1,\dots,x'_n]$. Entonces si tenemos un polinomio $P_d(x_1,\dots,x_n)=G_d(x'_1,\dots,x'_n)$ homogéneo de grado $d$, si cambiamos de variable sigue siendo homogéneo de grado $d$, puesto que el monomio $\prod x_i^{a_i}=\prod (\sum d_{ij} x_j')^{a_i}$ se expresa como un polinomio homogéneo de grado $d$ y la combinación lineal de polinomios homogéneos de grado $d$ también lo es.
+
+\vspace{-15pt}
+\subsection{Definición}
+
+Dado un $V$ $\mathbb{K}$-espacio vectorial y una forma bilineal $\phi: V \times V \rightarrow \mathbb{K}$, definimos la forma cuadrática asociada a $\phi$ como:
+\vspace{-15pt}
+\[Q_\phi: V\rightarrow \mathbb{K}; \;\; Q_\phi(\textbf{v})=\phi(\textbf{v},\textbf{v})\]
+
+\vspace{-25pt}
+\subsection{Matrices simétricas}
+Utilizando la expresión genérica de formas bilineales y escogiendo una base, tal que A es la matriz asociada a la base y X son las coordenadas de $\textbf{v}$ en esa base:
+\vspace{-10pt}
+\[Q_\phi(\textbf{v})=XAX^t=\sum_{i=1}^n{\sum_{j=1}^n {a_{ij} x_i x_j}}=\sum_{1\leq i\leq j \leq n}{b_{ij} x_i x_n}; \;\; b_{ij} = a_{ij}+a_{ji}, i\neq j, \; b_{ii} = a_{ii}\]
+
+\vspace{-10pt}
+De esta forma, fijada una base, $Q_\phi(\textbf{v})$ es un polinomio homogéneo de grado 2 y además siempre podemos encontrar una matriz simétrica para la forma cuadrática tal que $C$ es de la forma $c_{ij} = c_{ij}= \frac{a_{ij}+a_{ji}}{2}$ y $c_{ii}=a_{ii}$.
+
+De esta forma existe una biyección tal que $\mathcal{M}_{n\times n}(\mathbb{K}) \mbox{ simétricas } \rightarrowtail  \mathbb{K}_2[x_1,\dots,x_n]$ donde $\mathbb{K}_2[x_1,\dots,x_n]$ son los polinomios homogéneos de grado 2.
+
+Se observa además que dentro de esto, las matrices diagonales se corresponden a los polinomios homogéneos de grado 2 de la forma $\sum k_i x_i^2$.
+
+Además tras un cambio de variable lineal tal que $X^t=CX'^t$, $H'(x'_1,\dots,x'_n)=H(x_1,\dots,x_n)=XAX^t=X' C^t A C X'^t$, de tal forma que el polinomio $H'$ se asocia con $C^t A C$.
+\vspace{-15pt}
+\subsection{Formas bilineales simétricas}
+Si $\phi$ es simétrica se observa que $Q_\phi(u+v)=\phi(u+v,u+v)=2\phi(u,v)+\phi(v,v)+\phi(u,u)$, de esta forma podemos expresar $\phi$ en función de $Q_\phi$ de la siguiente forma sencilla:
+\vspace{-5pt}
+\[\phi(u,v)=\frac{Q_\phi(u+v)-Q_\phi(v)-Q_\phi(u)}{2}\]
+
+\vspace{-15pt}
+\subsection{Diagonalizar}
+Una base en $V$ diagonaliza a $\phi$ bilineal simétrica si su matriz asociada es diagonal, además como se ha dicho antes el polinomio homogéneo asociado será de la forma $\sum k_i x_i^2$.
+
+Vamos a demostrar ahora el siguiente teorema. Toda $\phi$ bilineal simétrica admite una base $\mathcal{B}$ que diagonaliza. Se sigue de este teorema que toda $\phi$ bilineal simétrica admite una base tal que el polinomio homogéneo asociado es de la forma $\sum \lambda_i x_i^2$.
 \end{document} 
