@@ -935,4 +935,50 @@ Si $\phi$ es simétrica se observa que $Q_\phi(u+v)=\phi(u+v,u+v)=2\phi(u,v)+\ph
 Una base en $V$ diagonaliza a $\phi$ bilineal simétrica si su matriz asociada es diagonal, además como se ha dicho antes el polinomio homogéneo asociado será de la forma $\sum k_i x_i^2$.
 
 Vamos a demostrar ahora el siguiente teorema. Toda $\phi$ bilineal simétrica admite una base $\mathcal{B}$ que diagonaliza. Se sigue de este teorema que toda $\phi$ bilineal simétrica admite una base tal que el polinomio homogéneo asociado es de la forma $\sum \lambda_i x_i^2$.
+
+Para demostrarlo haremos inducción sobre la dimensión, en $n=1$, cualquier matriz $1 \times 1$ es diagonal, si entonces lo suponemos cierto para $n-1$, demostramos que se verifica para $n$.
+
+\noindent Si tenemos la forma trivial, ya es diagonal, sin embargo si no es nula, existe al menos un $w_1$ tal que $\phi(w_1,w_1)\neq 0$ de tal forma que podemos crear una base $\mathcal{B}=\{w_1,\dots,w'_j,\dots,w'_n\}$ donde $w'_j=w_j-\frac{\phi(w_j,w_1)}{\phi(w_j,w_j)}w_j$, tal que $w'_j$ son ortogonales a $w_1$ (no necesariamente entre sí).
+
+Se observa que $S = \{\phi(w_1,-)=0\}$ es generado por los $w'_j$, así pues $V= S \oplus \langle w_1 \rangle$. Ahora por hipótesis de inducción, $S$, de dimensión $n-1$, diagonaliza a $\phi$ (posee una base ortogonal), así pues, por inducción, concluimos que $\phi$ diagonaliza en $V$.    $\blacksquare$
+
+\vspace{-15pt}
+\subsection{Normalización}
+
+Consiste en dejar la matriz de $\phi$ y la forma cuadrática asociada en forma diagonal con elementos que sean o bien 0, 1 o -1.
+
+\vspace{-10pt}
+\subsubsection{Caso $\mathbb{R}$}
+
+Gracias al teorema anterior, existe $\mathcal{B}=\{w_1,\dots,w_n\}$ ortogonal tal que $Q_\phi(X) = \sum_i^n \lambda_i x_i^2$ donde $x_i$ son las componentes de $X$ en base $\mathcal{B}$, así $\lambda_i = Q_\phi(w_i)=\phi(w_i,w_i)$, si ahora tomamos $w'_i=\frac{w_i}{\sqrt{|\lambda_i|}}$ para los $\lambda_i$ no nulos, se observa que en $\mathcal{B}'$:
+\vspace{-10pt}
+\[Q_\phi(w'_i)=\phi(w'_i,w'_i)=\left(\frac{1}{\sqrt{|\lambda_i|}}\right)^2 \phi(w_i,w_i) = \frac{\lambda_i}{|\lambda_i|}=sgn(\lambda_i)\]
+
+\noindent Tal que $Q_\phi(X) = \sum_i^r \pm {x'}_i^2$, (en $\mathcal{B}'$) y $r$ el número de $\lambda_i$ no nulos.
+
+\clearpage
+\vspace{-15pt}
+\subsubsection{Caso $\mathbb{C}$}
+
+De nuevo, existe $\mathcal{B}=\{w_1,\dots,w_n\}$ ortogonal tal que $Q_\phi(X) = \sum_i^n \lambda_i x_i^2$ donde $x_i$ son las componentes de $X$ en base $\mathcal{B}$, así $\lambda_i = Q_\phi(w_i)=\phi(w_i,w_i)$, si ahora tomamos $w'_i=\frac{w_i}{\beta_i}$, dónde $\beta_i^2 = \lambda_i$, para los $\lambda_i$ no nulos, se observa que en $\mathcal{B}'$:
+\vspace{-10pt}
+\[Q_\phi(w'_i)=\phi(w'_i,w'_i)={\frac{1}{\beta_i}}^2 \phi(w_i,w_i) = \frac{\lambda_i}{\lambda_i}=1\]
+
+\noindent Tal que $Q_\phi(X) = \sum_i^r {x'}_i^2$, (en $\mathcal{B}'$) y $r$ el número de $\lambda_i$ no nulos.
+
+\vspace{-15pt}
+\subsection{Teorema(s) de Sylvester}
+
+El número $r$ de ambos casos anteriores no depende de la base en la que se normalice.
+
+Sea $V_0 = \{u \in V : \phi(u,-)=0\}$, y $\langle w_{r+1}, \dots, w_n \rangle = V_0$, puesto que este esta contenido en $V_0$ y la intersección del complementario y $V_0$ es el conjunto vacío.
+
+\noindent Este número se denomina \textbf{rango} y si $r=n$ ($V_0 = \mathbb{0}$) la forma se denomina no degenerada.
+
+En el caso $\mathbb{R}$, llamaremos $d$ al número de $\lambda_i$ positivos que pueden normalizarse a 1. Este número no depende de la base en la que normalicemos.
+
+Supongamos dos bases $\mathcal{B}$ y $\mathcal{B}'$ que diagonalizan, y sea $S=\langle w_1, \dots, w_d \rangle$ y $T= \langle w'_{d+1}, \dots, w'_n \rangle$. Si $v \in S$, $Q_\phi(v)\geq 0$ y si $v \in T$, $Q_\phi(v)\leq 0$, entonces $S \cap T = \mathbb{0}$ y $S \oplus T = V$, tal que $n=d+(n-d')\implies d=d'$.
+
+Si $n=r=d$ decimos que la forma es definida positiva.
+
 \end{document} 
