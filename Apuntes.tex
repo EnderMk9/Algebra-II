@@ -981,4 +981,38 @@ Supongamos dos bases $\mathcal{B}$ y $\mathcal{B}'$ que diagonalizan, y sea $S=\
 
 Si $n=r=d$ decimos que la forma es definida positiva.
 
+$d$ es el rango de inercia positiva y $r-d$ es el grado de inercia negativa, tal que el par $(d,r-d)$ se denomina signatura de la forma.
+
+\vspace{-15pt}
+\subsection{Completación de Cuadrados}
+
+Vamos a tomar el ejemplo $Q(v) = 3 x_1^2+5 x_2^2+3 x_3^2 -2 x_1 x_2 + 2 x_1 x_3 - 2 x_2 x_3$, vamos a buscar términos que tengan cuadrados, por ejemplo en este caso $3 x_1^2$, y vamos a agruparlo con el resto de términos con $x_1$, tal que
+\vspace{-5pt}
+\[Q(v)=3\left\{x_1^2 -2 x_1 \left(\frac{x_2}{3}-\frac{x_3}{3}\right)\right\} +5 x_2^2+3 x_3^2 - 2 x_2 x_3\]
+
+Ahora tenemos que tratar de expresar los términos de $x_1$ como $(x_1-\square)^2$, en este caso:
+\vspace{-5pt}
+\[Q(v)=3\left\{\left[x_1-\left(\frac{x_2}{3}-\frac{x_3}{3}\right)\right]^2-\left(\frac{x_2}{3}-\frac{x_3}{3}\right)^2\right\} +5 x_2^2+3 x_3^2 - 2 x_2 x_3\]
+
+Ahora hacemos el cambio de variable $x'_1=x_1-\square$, en este caso:
+\vspace{-5pt}
+\[Q(v)=3 {x'}_1^2 -3 \left(\frac{x_2}{3}-\frac{x_3}{3}\right)^2 +5 x_2^2+3 x_3^2 - 2 x_2 x_3; \;\; x'_1=x_1-\left(\frac{x_2}{3}-\frac{x_3}{3}\right)\]
+
+Ahora repetimos para el resto de variables hasta que llegamos a:
+\vspace{-5pt}
+\[Q(v)=3 {x'}_1^2 +\frac{14}{3} {x'}_2^2+\frac{54}{21} {x'}_3^2; \;\; x'_2 = x_2 -\frac{x_3}{7} \;\; x'_3=x_3\]
+
+Si quisiéramos podríamos normalizarla usando el cambio de variable que se ha visto en apartados anteriores.
+
+Si en algún momento se obtiene una expresión como $a {x'}_1^2+b x_2 x_3$ o similar en la que no haya cuadrados que completar es últil realizar el siguiente cambio de variable que nos permitirá obtener cuadrados los cuales completar.
+\vspace{-5pt}
+\[\left\{\begin{matrix}
+x_2 = x'_2-x'_3 \\
+x_3 = x'_2+x'_3
+\end{matrix}\right. \implies \left\{\begin{matrix}
+x'_2 = \frac{x_2+x_3}{2} \\
+x'_3 = \frac{x_3-x_2}{2}
+\end{matrix}\right. \]
+
+En general si lo expresamos en forma matricial para el caso $\mathbb{R}$, podemos aplicar el \textit{Teorema Espectral} para matrices simétricas para diagonalizar la forma y después hacer otro cambio de variable para normalizarla.
 \end{document} 
